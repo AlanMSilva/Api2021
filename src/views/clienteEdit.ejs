@@ -1,0 +1,28 @@
+<%- include ('partials/_header')  %>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/clientes/update/<%= data.id%>" method="POST"><!--le voy a decir al servior que puede escuchar la ruta /update atraves del metodo post esto va a ejecutar el formulario-->
+                        <div class="form-group">
+                            <input type="text" name="nombre" value="<%= data.nombre%>" class="form-control"><!--le mando el valor que tiene la tabla a la vista que el usuario va a editar y ya los pueda modificar-->
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" name="correo" value="<%= data.correo%>" class="form-control ">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" name="telefono" value="<%= data.telefono%>" class="form-control">
+                        </div>
+                        <br>    
+                        <button type="submit" class="btn btn-primary">Editar Cliente</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ('partials/_footer')  %>

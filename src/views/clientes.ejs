@@ -1,0 +1,59 @@
+<%- include ('partials/_header')  %> <!--ejs podemos dividir archivos para evitar usar el enlace a boostrap varias veces osea es codigo es reutilizable en pocas palabras xD -->
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Telefono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %> <!--si tenemos datos vamos hacer un bucle-->
+                        <% for(var i = 0; i < data.length; i++ ) { %>
+                            <tr>
+                                <td><%= (i + 1) %></td><!-- la i es la que esta recorriendo 0 + 1 = 1 es decir por cada dato que tenga de la bd 1 2 3 4--> 
+                                <td><%= data[i].nombre %></td><!--el igual es para decir que interprete los datos y motrarlos por pantalla-->
+                                <td><%= data[i].correo %></td>
+                                <td><%= data[i].telefono %></td>
+                                <td>
+                                    <a href="/clientes/delete/<%= data[i].id%>" class="btn btn-danger">ELIMINAR</a><!--le concateno el id-->
+                                    <a href="/clientes/update/<%= data[i].id%>" class="btn btn-info">EDITAR</a>
+                                </td>
+                            </tr> 
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/clientes/add" method="POST"><!--le voy a decir al servior que puede escuchar la ruta /add atraves del metodo post-->
+                        <div class="form-group">
+                            <input type="text" name="nombre" placeholder="nombre" class="form-control">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" name="correo" placeholder="correo" class="form-control ">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="text" name="telefono" placeholder="telefono" class="form-control">
+                        </div>
+                        <br>    
+                        <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include ('partials/_footer')  %>
