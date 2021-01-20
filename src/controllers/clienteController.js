@@ -26,6 +26,10 @@ controller.save = (req,res)=>{//lo que hace es que cuando nosotros tratemos de r
         });
     });
 };
+controller.apiterceros =(req,res)=>{
+    res.render('api3');
+    res.redirect('/clientes/api3');
+}
 controller.edit =(req,res)=>{//mandamos a que renderise la pagina de clienteEdit y hacemos que los valores que obtubo los imprima en los input
     const {id} = req.params;
     req.getConnection((err,conn)=>{
